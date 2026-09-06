@@ -109,7 +109,14 @@ function HealthChat({ onClose }) {
 
   return (
 
-    <div className="chat-overlay">
+    <div
+      className="chat-overlay"
+      onClick={(e) => {
+        if (e.target === e.currentTarget && onClose) {
+          onClose();
+        }
+      }}
+    >
 
       <div className="chat-box">
 
@@ -139,7 +146,10 @@ function HealthChat({ onClose }) {
           </div>
 
 
-          <button onClick={onClose}>
+          <button
+            onClick={() => onClose && onClose()}
+            aria-label="Close chat"
+          >
             <X size={20} />
           </button>
 

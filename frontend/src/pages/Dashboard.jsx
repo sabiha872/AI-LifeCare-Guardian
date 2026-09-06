@@ -1,227 +1,124 @@
 import { useState } from "react";
-import { Send, Bot, User, X } from "lucide-react";
+import {
+  HeartPulse,
+  Pill,
+  Brain,
+  Activity,
+  ArrowRight
+} from "lucide-react";
 
-function HealthChat({ onClose }) {
+import StatCard from "../components/StatCard";
+import AvatarCard from "../components/AvatarCard";
+import HealthChat from "../components/HealthChat";
 
-  const [message, setMessage] = useState("");
-
-  const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: "Hi! I'm your AI Health Companion. How are you feeling today?"
-    }
-  ]);
-
-  const [loading, setLoading] = useState(false);
-
-
-  const sendMessage = async () => {
-
-    if (!message.trim() || loading) {
-      return;
-    }
-
-    const userMessage = message.trim();
-
-    // Show user's message
-    setMessages((prev) => [
-      ...prev,
-      {
-        sender: "user",
-        text: userMessage
-      }
-    ]);
-
-    setMessage("");
-    setLoading(true);
-
-
-    try {
-
-      const response = await fetch(
-        "http://127.0.0.1:5000/api/chat",
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            message: userMessage
-          })
-        }
-      );
-
-
-      const data = await response.json();
-
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: data.reply
-        }
-      ]);
-
-    }
-
-    catch (error) {
-
-      console.error(error);
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "Sorry, I couldn't connect to the health assistant."
-        }
-      ]);
-
-    }
-
-    finally {
-      setLoading(false);
-    }
-  };
-
-
-  const handleKeyDown = (e) => {
-
-    if (e.key === "Enter") {
-      sendMessage();
-    }
-
-  };
-
+function Dashboard({ setActivePage }) {
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
+    <div className="dashboard">
+      <div className="welcome">
+        <div>
+          <span>PERSONAL HEALTH DASHBOARD</span>
+          <h1>Good afternoon, Sabiha 👋</h1>
+          <p>Here's your health overview for today.</p>
+        </div>
 
-    <div className="chat-overlay">
-
-      <div className="chat-box">
-
-
-        {/* HEADER */}
-
-        <div className="chat-header">
-
-          <div className="chat-title">
-
-            <div className="chat-bot-icon">
-              <Bot size={21} />
-            </div>
-
-            <div>
-
-              <strong>
-                AI Health Companion
-              </strong>
-
-              <small>
-                Online • Health Assistant
-              </small>
-
-            </div>
-
+        <div className="health-score">
+          <div className="score">82%</div>
+          <div>
+            <strong>Health Score</strong>
+            <small>Looking good today</small>
           </div>
-
-
-          <button onClick={onClose}>
-            <X size={20} />
-          </button>
-
         </div>
-
-
-
-        {/* MESSAGES */}
-
-        <div className="chat-messages">
-
-          {messages.map((msg, index) => (
-
-            <div
-              key={index}
-              className={`message-row ${msg.sender}`}
-            >
-
-              <div className="message-icon">
-
-                {msg.sender === "bot"
-                  ? <Bot size={16} />
-                  : <User size={16} />
-                }
-
-              </div>
-
-
-              <div className="message">
-
-                {msg.text}
-
-              </div>
-
-            </div>
-
-          ))}
-
-
-          {loading && (
-
-            <div className="message-row bot">
-
-              <div className="message-icon">
-                <Bot size={16} />
-              </div>
-
-              <div className="message">
-                Thinking...
-              </div>
-
-            </div>
-
-          )}
-
-        </div>
-
-
-
-        {/* INPUT */}
-
-        <div className="chat-input">
-
-          <input
-            type="text"
-            placeholder="Tell me how you're feeling..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-
-
-          <button onClick={sendMessage}>
-
-            <Send size={18} />
-
-          </button>
-
-        </div>
-
-
-        <p className="chat-disclaimer">
-
-          AI suggestions are for informational purposes and
-          do not replace professional medical advice.
-
-        </p>
-
       </div>
 
-    </div>
+      <div className="stats">
+        <StatCard
+          title="Health Score"
+          value="82%"
+          subtitle="↑ 5% from last week"
+          icon={<HeartPulse />}
+          type="health"
+        />
+        <StatCard
+          title="Medicines"
+          value="2 / 3"
+          subtitle="1 medicine remaining"
+          icon={<Pill />}
+        />
+        <StatCard
+          title="Mood"
+          value="Good"
+          subtitle="Better than yesterday"
+          icon={<Brain />}
+        />
+        <StatCard
+          title="Activity"
+          value="6,240"
+          subtitle="Steps today"
+          icon={<Activity />}
+        />
+      </div>
 
+      <AvatarCard
+        onOpenChat={() => setIsChatOpen(true)}
+        onGoToAvatar={() => setActivePage && setActivePage("AI Health Avatar")}
+      />
+
+      <div className="bottom-grid">
+        <div className="tasks">
+          <div className="section-title">
+            <div>
+              <h2>Today's Health Tasks</h2>
+              <p>Stay consistent with your wellness goals</p>
+            </div>
+            <button>
+              View all <ArrowRight size={14} />
+            </button>
+          </div>
+
+          <div className="task-list">
+            <div className="task">
+              <span className="task-check">✓</span>
+              <div>
+                <strong>Morning medicine</strong>
+                <small>8:00 AM</small>
+              </div>
+            </div>
+            <div className="task">
+              <span className="task-check">○</span>
+              <div>
+                <strong>Drink 2 glasses of water</strong>
+                <small>10:00 AM</small>
+              </div>
+            </div>
+            <div className="task">
+              <span className="task-check">○</span>
+              <div>
+                <strong>30 minute walk</strong>
+                <small>5:00 PM</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="wellness">
+          <span>WELLNESS TIP</span>
+          <h2>Take care of your mind as much as your body. 🧠</h2>
+          <p>
+            Take a few minutes today for deep breathing and mindful relaxation.
+          </p>
+          <button>
+            Start exercise <ArrowRight size={14} />
+          </button>
+        </div>
+      </div>
+
+      {isChatOpen && (
+        <HealthChat onClose={() => setIsChatOpen(false)} />
+      )}
+    </div>
   );
 }
 
-export default HealthChat;
+export default Dashboard;

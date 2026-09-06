@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -19,13 +19,26 @@ function App() {
 
   const [activePage, setActivePage] = useState("Dashboard");
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
 
   const renderPage = () => {
 
     switch (activePage) {
 
       case "Dashboard":
-        return <Dashboard />;
+        return <Dashboard setActivePage={setActivePage} />;
 
       case "AI Health Avatar":
         return <Avatar />;
@@ -66,7 +79,7 @@ function App() {
 
       <main className="main">
 
-        <Navbar />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
 
         <div className="content">
 

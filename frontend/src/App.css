@@ -222,6 +222,23 @@ nav {
   gap: 22px;
 }
 
+.theme-toggle {
+  background: transparent;
+  color: #65716d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #f0f8f5;
+  color: #159570;
+  transform: scale(1.08);
+}
+
 .notification {
   background: transparent;
   color: #65716d;
@@ -1889,3 +1906,430 @@ nav {
     min-width: 80px;
   }
 }
+
+
+/* =========================================
+   HEALTH CHAT POPUP / MODAL BASE
+========================================= */
+
+.chat-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.chat-box {
+  width: 100%;
+  max-width: 480px;
+  height: 600px;
+  max-height: 85vh;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e4ebe8;
+}
+
+.chat-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid #edf1ef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-bot-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #dff5ed;
+  color: #159570;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-header button {
+  background: transparent;
+  color: #7d8985;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-header button:hover {
+  background: #f0f5f3;
+  color: #17211f;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fbfdfc;
+}
+
+.message-row {
+  display: flex;
+  gap: 10px;
+  max-width: 85%;
+}
+
+.message-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-row.bot {
+  align-self: flex-start;
+}
+
+.message-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-row.bot .message-icon {
+  background: #e2f5ee;
+  color: #159570;
+}
+
+.message-row.user .message-icon {
+  background: #159570;
+  color: white;
+}
+
+.message-row .message {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.message-row.bot .message {
+  background: #f0f7f4;
+  color: #25332e;
+  border-top-left-radius: 4px;
+}
+
+.message-row.user .message {
+  background: #159570;
+  color: white;
+  border-top-right-radius: 4px;
+}
+
+.chat-input {
+  padding: 14px 18px;
+  border-top: 1px solid #edf1ef;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: white;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #dce5e1;
+  border-radius: 12px;
+  font-size: 13px;
+  outline: none;
+  background: #f5f8f7;
+  color: #17211f;
+}
+
+.chat-input input:focus {
+  border-color: #159570;
+  background: white;
+}
+
+.chat-input button {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #159570;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.chat-input button:hover {
+  background: #117d5e;
+}
+
+.chat-disclaimer {
+  padding: 8px 18px 14px;
+  margin: 0;
+  font-size: 10px;
+  color: #89938f;
+  text-align: center;
+  background: white;
+}
+
+
+/* =========================================
+   DARK MODE OVERRIDES
+========================================= */
+
+[data-theme="dark"] body {
+  background-color: #0f1715;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .sidebar {
+  background-color: #16221f;
+  border-right-color: #22332e;
+}
+
+[data-theme="dark"] .logo-icon {
+  background-color: #1c362d;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .logo h2 {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .nav-item {
+  color: #a0b2ac;
+}
+
+[data-theme="dark"] .nav-item:hover {
+  background-color: #1e302b;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .nav-item.active {
+  background-color: #1a3c33;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .sidebar-help {
+  background-color: #311c1a;
+  color: #f1726a;
+}
+
+[data-theme="dark"] .sidebar-help small {
+  color: #c78883;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #16221f;
+  border-bottom-color: #22332e;
+}
+
+[data-theme="dark"] .search-box {
+  background-color: #202e2a;
+  color: #9eb0aa;
+}
+
+[data-theme="dark"] .search-box input {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .search-box input::placeholder {
+  color: #7d8f89;
+}
+
+[data-theme="dark"] .notification {
+  color: #a0b2ac;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #f5b041;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: #253832;
+  color: #f8c471;
+}
+
+[data-theme="dark"] .user-info strong {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .user-info small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .user-avatar {
+  background-color: #1c362d;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .tasks,
+[data-theme="dark"] .medicine-add-card,
+[data-theme="dark"] .medicine-card,
+[data-theme="dark"] .mental-card,
+[data-theme="dark"] .lifestyle-card,
+[data-theme="dark"] .emergency-card,
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] .health-card,
+[data-theme="dark"] .analysis-card,
+[data-theme="dark"] .avatar-chat,
+[data-theme="dark"] .report-upload-card,
+[data-theme="dark"] .report-result,
+[data-theme="dark"] .sos-card,
+[data-theme="dark"] .lifestyle-result {
+  background-color: #16221f;
+  border-color: #22332e;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .stat-card h2,
+[data-theme="dark"] .welcome h1,
+[data-theme="dark"] .avatar-content h2,
+[data-theme="dark"] .section-title h2,
+[data-theme="dark"] .task strong,
+[data-theme="dark"] .page-heading h1,
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .welcome p,
+[data-theme="dark"] .stat-card p,
+[data-theme="dark"] .stat-header span,
+[data-theme="dark"] .task small,
+[data-theme="dark"] .section-title p,
+[data-theme="dark"] p {
+  color: #9cb0a8;
+}
+
+[data-theme="dark"] .avatar {
+  background: linear-gradient(135deg, #182e27, #13241f);
+  border-color: #244238;
+}
+
+[data-theme="dark"] .avatar-image {
+  background: #1d332c;
+}
+
+[data-theme="dark"] .wellness {
+  background-color: #212019;
+  border-color: #3b3727;
+}
+
+[data-theme="dark"] .wellness p {
+  color: #bfae93;
+}
+
+[data-theme="dark"] .task {
+  border-bottom-color: #22332e;
+}
+
+[data-theme="dark"] .medicine-form input,
+[data-theme="dark"] .medicine-form select,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background-color: #202e2a;
+  border-color: #2c4039;
+  color: #e6f1ed;
+}
+
+/* CHAT MODAL DARK MODE */
+[data-theme="dark"] .chat-overlay {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .chat-box {
+  background-color: #16221f;
+  border-color: #22332e;
+  color: #e6f1ed;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .chat-header {
+  background-color: #16221f;
+  border-bottom-color: #22332e;
+}
+
+[data-theme="dark"] .chat-header button {
+  color: #9cb0a8;
+}
+
+[data-theme="dark"] .chat-header button:hover {
+  background-color: #202e2a;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .chat-bot-icon {
+  background-color: #1c362d;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .chat-title strong {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .chat-title small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .chat-messages {
+  background-color: #0f1917;
+}
+
+[data-theme="dark"] .message-row.bot .message {
+  background-color: #1d2c27;
+  color: #e6f1ed;
+  border: 1px solid #283a34;
+}
+
+[data-theme="dark"] .message-row.bot .message-icon {
+  background-color: #1c362d;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .chat-input {
+  background-color: #16221f;
+  border-top-color: #22332e;
+}
+
+[data-theme="dark"] .chat-input input {
+  background-color: #202e2a;
+  border-color: #2c4039;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .chat-input input::placeholder {
+  color: #7d8f89;
+}
+
+[data-theme="dark"] .chat-disclaimer {
+  background-color: #16221f;
+  color: #7d8f89;
+}
+
