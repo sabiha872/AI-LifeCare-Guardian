@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Send, Bot, User, X } from "lucide-react";
+import FormattedText from "./FormattedText";
 
 function HealthChat({ onClose }) {
 
@@ -109,7 +110,14 @@ function HealthChat({ onClose }) {
 
   return (
 
-    <div className="chat-overlay">
+    <div
+      className="chat-overlay"
+      onClick={(e) => {
+        if (e.target === e.currentTarget && onClose) {
+          onClose();
+        }
+      }}
+    >
 
       <div className="chat-box">
 
@@ -139,7 +147,10 @@ function HealthChat({ onClose }) {
           </div>
 
 
-          <button onClick={onClose}>
+          <button
+            onClick={() => onClose && onClose()}
+            aria-label="Close chat"
+          >
             <X size={20} />
           </button>
 
@@ -169,7 +180,11 @@ function HealthChat({ onClose }) {
 
 
               <div className="message">
-                {msg.text}
+                {msg.sender === "bot" ? (
+                  <FormattedText content={msg.text} />
+                ) : (
+                  msg.text
+                )}
               </div>
 
             </div>
@@ -179,14 +194,16 @@ function HealthChat({ onClose }) {
 
           {loading && (
 
-            <div className="message-row bot">
+            <div className="message-row bot thinking-row">
 
               <div className="message-icon">
                 <Bot size={16} />
               </div>
 
-              <div className="message">
-                Thinking...
+              <div className="message thinking-bubble">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
               </div>
 
             </div>

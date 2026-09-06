@@ -1364,3 +1364,177 @@
   }
 
 }
+
+
+/* =========================================
+   DARK MODE OVERRIDES
+========================================= */
+
+[data-theme="dark"] .avatar-page {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .avatar-page-header h1 {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .avatar-page-header p {
+  color: #9cb0a8;
+}
+
+[data-theme="dark"] .face-status {
+  background: #2b2416;
+  color: #d4b065;
+}
+
+[data-theme="dark"] .face-status.detected {
+  background: #1c362d;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .avatar-section {
+  background: #16221f;
+  border-color: #22332e;
+}
+
+[data-theme="dark"] .avatar-section h2 {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .avatar-section > p {
+  color: #9cb0a8;
+}
+
+[data-theme="dark"] .avatar-emotion {
+  background: #1a2925;
+  border-color: #263b35;
+}
+
+[data-theme="dark"] .avatar-emotion-icon {
+  background: #1c362d;
+}
+
+[data-theme="dark"] .avatar-emotion small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .avatar-emotion strong {
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .avatar-chat {
+  background: #16221f;
+  border-color: #22332e;
+}
+
+[data-theme="dark"] .avatar-chat .chat-header {
+  border-bottom-color: #22332e;
+  background: #16221f;
+}
+
+[data-theme="dark"] .avatar-chat .chat-icon {
+  background: #1c362d;
+}
+
+[data-theme="dark"] .avatar-chat .chat-header strong {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .avatar-chat .chat-header small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .avatar-chat .chat-messages {
+  background: linear-gradient(180deg, #101917, #16221f);
+}
+
+[data-theme="dark"] .analysis-card {
+  background: #182723;
+  border-color: #263832;
+}
+
+[data-theme="dark"] .analysis-title {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .emotion-icon {
+  background: #1c362d;
+}
+
+[data-theme="dark"] .emotion-result small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .emotion-result h3 {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .confidence-header {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .confidence-bar {
+  background: #23342f;
+}
+
+[data-theme="dark"] .ai-message {
+  background: #1d2c27;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .system-message {
+  background: #1c2b26;
+  color: #9cb0a8;
+}
+
+[data-theme="dark"] .avatar-chat .chat-input {
+  background: #16221f;
+  border-top-color: #22332e;
+}
+
+[data-theme="dark"] .avatar-chat .chat-input input {
+  background: #202e2a;
+  border-color: #2c4039;
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .avatar-chat .camera-controls {
+  background: #16221f;
+  border-top-color: #22332e;
+}
+
+[data-theme="dark"] .avatar-chat .mic-button {
+  background: #202e2a;
+  color: #40d3a7;
+}
+
+[data-theme="dark"] .health-card {
+  background: #16221f;
+  border-color: #22332e;
+}
+
+[data-theme="dark"] .health-card > span {
+  background: #1c362d;
+}
+
+[data-theme="dark"] .health-card strong {
+  color: #e6f1ed;
+}
+
+[data-theme="dark"] .health-card small {
+  color: #8fa19b;
+}
+
+[data-theme="dark"] .health-card.emergency {
+  background: #2b1d1c;
+  border-color: #422927;
+}
+
+[data-theme="dark"] .health-card.emergency > span {
+  background: #3b2220;
+}
+
+[data-theme="dark"] .avatar-note {
+  background: #2b2518;
+  color: #d4b568;
+}

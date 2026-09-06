@@ -1,10 +1,12 @@
 import {
   Bell,
   Search,
-  User
+  User,
+  Sun,
+  Moon
 } from "lucide-react";
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }) {
 
   return (
     <header className="navbar">
@@ -22,6 +24,15 @@ function Navbar() {
 
 
       <div className="navbar-right">
+
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
 
         <button className="notification">
           <Bell size={20} />
