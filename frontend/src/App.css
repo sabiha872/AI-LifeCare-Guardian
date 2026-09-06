@@ -2332,4 +2332,121 @@ nav {
   background-color: #16221f;
   color: #7d8f89;
 }
+
+
+/* =========================================
+   RICH FORMATTED CHAT TEXT & TYPING BUBBLE
+========================================= */
+
+.formatted-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+.formatted-paragraph {
+  margin: 0;
+}
+
+.formatted-bold {
+  font-weight: 700;
+  color: #117d5e;
+}
+
+[data-theme="dark"] .formatted-bold {
+  color: #40d3a7;
+}
+
+.formatted-heading {
+  margin: 8px 0 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #159570;
+}
+
+[data-theme="dark"] .formatted-heading {
+  color: #40d3a7;
+}
+
+.formatted-list,
+.formatted-ordered-list {
+  margin: 4px 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.formatted-list li,
+.formatted-ordered-list li {
+  line-height: 1.5;
+}
+
+.formatted-callout {
+  margin: 8px 0;
+  padding: 10px 14px;
+  background: #eef8f5;
+  border-left: 3px solid #159570;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12px;
+  color: #25332e;
+}
+
+[data-theme="dark"] .formatted-callout {
+  background: #1c2e28;
+  border-left-color: #40d3a7;
+  color: #e6f1ed;
+}
+
+.callout-icon {
+  font-size: 15px;
+}
+
+/* ANIMATED TYPING DOTS */
+.thinking-bubble {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px !important;
+}
+
+.thinking-bubble .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #159570;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+[data-theme="dark"] .thinking-bubble .dot {
+  background: #40d3a7;
+}
+
+.thinking-bubble .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.thinking-bubble .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.thinking-bubble .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
 

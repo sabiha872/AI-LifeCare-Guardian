@@ -7,6 +7,7 @@ import {
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import TalkingAvatar from "../components/TalkingAvatar";
+import FormattedText from "../components/FormattedText";
 
 import "./Avatar.css";
 
@@ -1228,7 +1229,11 @@ function Avatar() {
                     </span>
 
                     <div>
-                      {message.text}
+                      {message.sender === "ai" ? (
+                        <FormattedText content={message.text} />
+                      ) : (
+                        message.text
+                      )}
 
                       {message.sender ===
                         "ai" && (
